@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12151c">
+  <meta name="description" content="Selected visual art, character design, and sketchbook studies by Nancy (Yanxi) Zhou, 2023–2026.">
+  <title>Selected Visual Art & Sketchbook — Nancy (Yanxi) Zhou</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312151c'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia' font-size='38' fill='%23efece6'%3EN%3C/text%3E%3C/svg%3E">
+  <style>
+    :root { color-scheme:dark; --bg:#12151c; --ink:#efece6; --muted:#9ba3b4; --line:#2c3444; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:28px; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.6 Arial,Helvetica,sans-serif; -webkit-font-smoothing:antialiased; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    button { font:inherit; color:inherit; }
+    a { color:inherit; text-decoration:none; }
+    button:focus-visible,a:focus-visible { outline:2px solid var(--ink); outline-offset:6px; }
+    ::selection { background:#efece6; color:#12151c; }
+    .skip-link { position:fixed; top:12px; left:12px; z-index:5; background:var(--ink); color:var(--bg); padding:10px 18px; transform:translateY(-200%); }
+    .skip-link:focus { transform:none; }
+    .page { width:min(1440px,100%); margin:auto; padding:0 64px; }
+    .masthead { min-height:105px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--line); }
+    .name { font-size:15px; letter-spacing:.01em; }
+    .name span { color:var(--muted); }
+    .masthead a { font-size:12px; color:var(--muted); transition:color .2s; }
+    .masthead a:hover { color:var(--ink); }
+    .masthead a span { margin-left:16px; }
+    .hero { padding:72px 0 70px; }
+    .eyebrow { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin:0 0 23px; }
+    h1 { font-family:Georgia,'Times New Roman',serif; font-size:clamp(36px,4.8vw,65px); line-height:1.12; font-weight:400; letter-spacing:-.045em; max-width:1030px; margin:0; text-wrap:balance; }
+    .intro { color:var(--muted); max-width:735px; font-size:15px; line-height:1.9; margin:26px 0 0; }
+    .collection-bar { border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:20px; padding:21px 0 27px; }
+    h2 { font-size:12px; font-weight:400; margin:0; letter-spacing:.025em; }
+    .collection-meta { color:var(--muted); font-size:11px; }
+    .collection-meta span { margin-left:20px; }
+    .gallery { --columns:3; display:grid; grid-template-columns:repeat(var(--columns),minmax(0,1fr)); gap:0 26px; align-items:start; }
+    .artwork { margin:0; min-width:0; }
+    .artwork-button { display:block; width:100%; padding:0; border:0; background:none; text-align:left; cursor:zoom-in; }
+    .image-frame { display:block; overflow:hidden; border:1px solid var(--line); position:relative; background:#191e28; }
+    .image-frame img { display:block; width:100%; height:auto; transition:transform .55s cubic-bezier(.2,.6,.3,1); }
+    .open-mark { position:absolute; bottom:12px; right:12px; width:28px; height:28px; display:grid; place-items:center; background:#12151cd9; border:1px solid #9ba3b440; border-radius:50%; opacity:0; transform:translateY(5px); transition:opacity .2s,transform .2s; }
+    @media (hover:hover) { .artwork-button:hover img { transform:scale(1.025); } .artwork-button:hover .open-mark { opacity:1; transform:none; } }
+    .artwork-button:focus-visible .open-mark { opacity:1; transform:none; }
+    .caption { display:flex; justify-content:space-between; gap:12px; padding:12px 0 0; color:var(--muted); font-size:11px; line-height:18px; }
+    .work-number { font-size:10px; font-variant-numeric:tabular-nums; opacity:.75; }
+    footer { margin-top:42px; padding:27px 0 36px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:20px; color:var(--muted); font-size:11px; }
+    footer p { margin:0; }
+    footer a { white-space:nowrap; }
+    dialog { position:fixed; inset:0; margin:0; padding:0; max-width:none; max-height:none; width:100%; height:100%; height:100dvh; border:0; background:#10131bf5; color:var(--ink); }
+    dialog::backdrop { background:#10131b; }
+    .viewer { height:100%; display:grid; grid-template-rows:auto minmax(0,1fr) auto; }
+    .viewer-top { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:20px 28px; }
+    .viewer-count { color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; }
+    .viewer-actions { display:flex; gap:12px; align-items:center; }
+    .control { border:1px solid var(--line); background:var(--bg); cursor:pointer; display:grid; place-items:center; min-width:44px; min-height:44px; transition:background .2s; }
+    .control:hover { background:#262c38; }
+    .text-control { font-size:12px; padding:0 14px; }
+    .close { font-size:26px; font-weight:300; }
+    .viewer-main { display:grid; grid-template-columns:64px minmax(0,1fr) 64px; gap:12px; padding:0 24px; min-height:0; }
+    .direction { align-self:center; font-size:23px; }
+    .image-stage { overflow:auto; min-height:0; display:flex; align-items:center; justify-content:center; outline-offset:-3px; }
+    .image-stage>img { width:auto; height:auto; max-width:100%; max-height:100%; object-fit:contain; display:block; }
+    .image-stage.zoom { display:block; text-align:center; }
+    .image-stage.zoom>img { display:block; max-width:none; max-height:none; margin:auto; }
+    .detail-panels { display:flex; flex-direction:column; width:min(100%,1280px); margin:auto; gap:0; }
+    .detail-panels img { display:block; width:100%; height:auto; }
+    .viewer-bottom { padding:18px 28px 24px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .viewer-title { font-family:Georgia,serif; font-weight:400; font-size:20px; margin:0; }
+    .viewer-help { color:var(--muted); font-size:11px; margin:4px 0 0; }
+    .original-link { font-size:12px; color:var(--muted); white-space:nowrap; }
+    .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+    @media (max-width:1000px) { .page { padding:0 36px; } .gallery { --columns:2; gap:0 24px; } .hero { padding:58px 0; } }
+    @media (max-width:600px) { .page { padding:0 22px; } .masthead { min-height:82px; gap:12px; } .name { font-size:12px; } .masthead a { font-size:11px; } .masthead a span { margin-left:7px; } .hero { padding:46px 0 44px; } .eyebrow { font-size:9px; margin-bottom:19px; } h1 { font-size:39px; letter-spacing:-.04em; } .intro { font-size:13px; line-height:1.85; margin-top:22px; } .gallery { --columns:1; } .collection-bar { padding:20px 0 24px; } .collection-meta span { display:none; } .caption { font-size:12px; } footer { margin-top:24px; font-size:10px; } .viewer-top { padding:14px; } .viewer-actions { gap:8px; } .viewer-main { grid-template-columns:40px minmax(0,1fr) 40px; gap:6px; padding:0 8px; } .direction { min-width:40px; } .viewer-bottom { padding:18px 16px 24px; display:block; } .viewer-title { font-size:18px; } .original-link { display:inline-block; margin-top:12px; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none!important; } }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#collection">Skip to the collection</a>
+  <div class="page">
+    <header class="masthead"><div class="name">Nancy <span>(Yanxi)</span> Zhou</div><a href="#collection">View collection <span aria-hidden="true">↘</span></a></header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Visual archive &nbsp; / &nbsp; 2023–2026</p>
+        <h1 id="page-title">Selected Visual Art, Character Design &amp; UI Studies</h1>
+        <p class="intro">Digital illustrations, low-saturation pixel art, watercolor environment concepts, and character design sketches by Nancy (Yanxi) Zhou (2023–2026).</p>
+      </section>
+      <section id="collection" aria-labelledby="collection-title">
+        <div class="collection-bar"><h2 id="collection-title">The collection</h2><div class="collection-meta">15 works <span>Click a work to explore ↗</span></div></div>
+        <div class="gallery">
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="0" aria-label="Open Character & costume study">
+          <span class="image-frame"><img src="assets/sketch_01.jpg" width="1284" height="798" alt="Two characters in an atmospheric interior, with an ornate staff and layered costumes." loading="eager" decoding="async" fetchpriority="high"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Character & costume study</span><span class="work-number">01</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="1" aria-label="Open Pixel environment study">
+          <span class="image-frame"><img src="assets/sketch_04.jpg" width="1600" height="949" alt="An intricate, glowing miniature environment inside a golden eye." loading="eager" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Pixel environment study</span><span class="work-number">02</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="2" aria-label="Open Harbor at dusk">
+          <span class="image-frame"><img src="assets/sketch_03.jpg" width="1172" height="838" alt="Moored boats and silhouetted rigging in a softly lit harbor." loading="eager" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Harbor at dusk</span><span class="work-number">03</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="3" aria-label="Open Collected sketchbook">
+          <span class="image-frame"><img src="assets/sketch_10.jpg" width="344" height="1600" alt="A vertical collection of character sketches, scene studies, and visual development work." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Collected sketchbook</span><span class="work-number">04</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="4" aria-label="Open Landscape & movement">
+          <span class="image-frame"><img src="assets/sketch_05.jpg" width="1284" height="794" alt="A figure on a winding path beneath a flock of birds in a pale landscape." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Landscape & movement</span><span class="work-number">05</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="5" aria-label="Open Gesture & fantasy study">
+          <span class="image-frame"><img src="assets/sketch_14.jpg" width="1557" height="924" alt="A dynamic character pose surrounded by expressive pale blue, feather-like forms." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Gesture & fantasy study</span><span class="work-number">06</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="6" aria-label="Open Characters in the rain">
+          <span class="image-frame"><img src="assets/sketch_06.jpg" width="1180" height="782" alt="Three characters in ochre coats holding black umbrellas in the rain." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Characters in the rain</span><span class="work-number">07</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="7" aria-label="Open Watercolor environment study">
+          <span class="image-frame"><img src="assets/sketch_07.jpg" width="1600" height="928" alt="An overhead view of a pale boat floating on green and golden water." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Watercolor environment study</span><span class="work-number">08</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="8" aria-label="Open City scene study">
+          <span class="image-frame"><img src="assets/sketch_02.jpg" width="1600" height="852" alt="A yellow taxi and its driver on a busy city street." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>City scene study</span><span class="work-number">09</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="9" aria-label="Open Character movement study">
+          <span class="image-frame"><img src="assets/sketch_11.jpg" width="1552" height="864" alt="Two stylized characters walking with bags through a shadowed street." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Character movement study</span><span class="work-number">10</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="10" aria-label="Open Café scene study">
+          <span class="image-frame"><img src="assets/sketch_12.jpg" width="1284" height="776" alt="Three characters outside a bright yellow café, with a bicycle at the edge of the scene." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Café scene study</span><span class="work-number">11</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="11" aria-label="Open Water & portrait study">
+          <span class="image-frame"><img src="assets/sketch_13.jpg" width="1600" height="668" alt="A face floating in blue water with soft reflections and white highlights." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Water & portrait study</span><span class="work-number">12</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="12" aria-label="Open Light & character study">
+          <span class="image-frame"><img src="assets/sketch_08.jpg" width="1600" height="879" alt="Two figures in an intimate interior, one wearing a red beret." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Light & character study</span><span class="work-number">13</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="13" aria-label="Open Graphite portrait study">
+          <span class="image-frame"><img src="assets/sketch_09.jpg" width="1384" height="620" alt="A close-up monochrome portrait rendered with expressive pencil strokes." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Graphite portrait study</span><span class="work-number">14</span></span>
+        </button>
+      </figure>
+      <figure class="artwork">
+        <button class="artwork-button" type="button" data-index="14" aria-label="Open Color & atmosphere study">
+          <span class="image-frame"><img src="assets/sketch_15.jpg" width="1311" height="569" alt="A figure in a room filled with contrasting blue, violet, and pink light." loading="lazy" decoding="async"><span class="open-mark" aria-hidden="true">↗</span></span>
+          <span class="caption"><span>Color & atmosphere study</span><span class="work-number">15</span></span>
+        </button>
+      </figure>
+        </div>
+      </section>
+    </main>
+    <footer><p>© 2026 Nancy (Yanxi) Zhou <span aria-hidden="true">&nbsp; / &nbsp;</span> Visual art &amp; sketchbook</p><a href="#top">Back to top ↑</a></footer>
+  </div>
+  <dialog id="lightbox" aria-labelledby="viewer-title" aria-describedby="viewer-help">
+    <div class="viewer">
+      <div class="viewer-top"><span class="viewer-count" aria-live="polite" aria-atomic="true"></span><div class="viewer-actions"><button type="button" class="control text-control" id="zoom" aria-pressed="false">Zoom in</button><button type="button" class="control close" id="close" aria-label="Close artwork viewer" autofocus>×</button></div></div>
+      <div class="viewer-main"><button class="control direction" id="previous" type="button" aria-label="Previous artwork">←</button><div class="image-stage" tabindex="0" role="region" aria-label="Artwork image; scroll to inspect when zoomed"></div><button class="control direction" id="next" type="button" aria-label="Next artwork">→</button></div>
+      <div class="viewer-bottom"><div><h2 class="viewer-title" id="viewer-title"></h2><p class="viewer-help" id="viewer-help">← → Browse works · Esc Close · Zoom to inspect</p></div><a class="original-link" id="image-link" href="assets/sketch_01.jpg" target="_blank" rel="noopener">Open image ↗</a></div>
+    </div>
+  </dialog>
+  <script>
+    const works = [{"src":"assets/sketch_01.jpg","width":1284,"height":798,"title":"Character & costume study","alt":"Two characters in an atmospheric interior, with an ornate staff and layered costumes.","details":[]},{"src":"assets/sketch_04.jpg","width":1600,"height":949,"title":"Pixel environment study","alt":"An intricate, glowing miniature environment inside a golden eye.","details":[]},{"src":"assets/sketch_03.jpg","width":1172,"height":838,"title":"Harbor at dusk","alt":"Moored boats and silhouetted rigging in a softly lit harbor.","details":[]},{"src":"assets/sketch_10.jpg","width":344,"height":1600,"title":"Collected sketchbook","alt":"A vertical collection of character sketches, scene studies, and visual development work.","details":[{"height":1486,"src":"assets/sketch_10_detail_01.jpg","width":1280,"bytes":252596},{"height":1487,"src":"assets/sketch_10_detail_02.jpg","width":1280,"bytes":204047},{"height":1487,"src":"assets/sketch_10_detail_03.jpg","width":1280,"bytes":173216},{"height":1487,"src":"assets/sketch_10_detail_04.jpg","width":1280,"bytes":157190}]},{"src":"assets/sketch_05.jpg","width":1284,"height":794,"title":"Landscape & movement","alt":"A figure on a winding path beneath a flock of birds in a pale landscape.","details":[]},{"src":"assets/sketch_14.jpg","width":1557,"height":924,"title":"Gesture & fantasy study","alt":"A dynamic character pose surrounded by expressive pale blue, feather-like forms.","details":[]},{"src":"assets/sketch_06.jpg","width":1180,"height":782,"title":"Characters in the rain","alt":"Three characters in ochre coats holding black umbrellas in the rain.","details":[]},{"src":"assets/sketch_07.jpg","width":1600,"height":928,"title":"Watercolor environment study","alt":"An overhead view of a pale boat floating on green and golden water.","details":[]},{"src":"assets/sketch_02.jpg","width":1600,"height":852,"title":"City scene study","alt":"A yellow taxi and its driver on a busy city street.","details":[]},{"src":"assets/sketch_11.jpg","width":1552,"height":864,"title":"Character movement study","alt":"Two stylized characters walking with bags through a shadowed street.","details":[]},{"src":"assets/sketch_12.jpg","width":1284,"height":776,"title":"Café scene study","alt":"Three characters outside a bright yellow café, with a bicycle at the edge of the scene.","details":[]},{"src":"assets/sketch_13.jpg","width":1600,"height":668,"title":"Water & portrait study","alt":"A face floating in blue water with soft reflections and white highlights.","details":[]},{"src":"assets/sketch_08.jpg","width":1600,"height":879,"title":"Light & character study","alt":"Two figures in an intimate interior, one wearing a red beret.","details":[]},{"src":"assets/sketch_09.jpg","width":1384,"height":620,"title":"Graphite portrait study","alt":"A close-up monochrome portrait rendered with expressive pencil strokes.","details":[]},{"src":"assets/sketch_15.jpg","width":1311,"height":569,"title":"Color & atmosphere study","alt":"A figure in a room filled with contrasting blue, violet, and pink light.","details":[]}];
+    const gallery = document.querySelector('.gallery');
+    const cards = [...document.querySelectorAll('.artwork')];
+    // Explicit shortest-column placement keeps DOM and keyboard order intact.
+    function layoutGallery() {
+      const columns = Number(getComputedStyle(gallery).getPropertyValue('--columns'));
+      const gap = parseFloat(getComputedStyle(gallery).columnGap) || 0;
+      const width = (gallery.clientWidth - gap * (columns - 1)) / columns;
+      const heights = Array(columns).fill(0);
+      gallery.style.gridAutoRows = '1px';
+      cards.forEach((card, i) => {
+        const column = heights.indexOf(Math.min(...heights));
+        const caption = card.querySelector('.caption').getBoundingClientRect().height;
+        const height = Math.ceil((width - 2) * works[i].height / works[i].width + 2 + caption + 30);
+        card.style.gridColumn = String(column + 1);
+        card.style.gridRow = (heights[column] + 1) + ' / span ' + height;
+        heights[column] += height;
+      });
+    }
+    new ResizeObserver(layoutGallery).observe(gallery);
+    layoutGallery();
+    const dialog = document.querySelector('#lightbox');
+    const stage = document.querySelector('.image-stage');
+    const zoom = document.querySelector('#zoom');
+    let current = 0, enlarged = false, trigger = null, scrollPosition = 0;
+    function renderArtwork() {
+      const work = works[current];
+      stage.replaceChildren();
+      stage.classList.toggle('zoom', enlarged);
+      if (enlarged && work.details.length) {
+        const panels = document.createElement('div');
+        panels.className = 'detail-panels';
+        work.details.forEach((panel, index) => {
+          const image = new Image(panel.width, panel.height);
+          image.src = panel.src; image.alt = work.alt + ' Detail panel ' + (index + 1) + ' of ' + work.details.length + '.';
+          panels.append(image);
+        });
+        stage.append(panels);
+      } else {
+        const image = new Image(work.width, work.height);
+        image.src = work.src; image.alt = work.alt;
+        if (enlarged) image.style.width = work.width + 'px';
+        stage.append(image);
+      }
+      stage.scrollTop = 0; stage.scrollLeft = 0;
+      document.querySelector('#viewer-title').textContent = work.title;
+      document.querySelector('.viewer-count').textContent = String(current + 1).padStart(2, '0') + ' / ' + works.length;
+      document.querySelector('#image-link').href = work.src;
+      zoom.textContent = enlarged ? 'Fit to screen' : (work.details.length ? 'Inspect details' : 'Zoom in');
+      zoom.setAttribute('aria-pressed', String(enlarged));
+      [-1, 1].forEach(direction => { const preload = new Image(); preload.src = works[(current + direction + works.length) % works.length].src; });
+    }
+    function navigate(direction) { current = (current + direction + works.length) % works.length; enlarged = false; renderArtwork(); }
+    document.querySelectorAll('.artwork-button').forEach(button => button.addEventListener('click', () => {
+      trigger = button; current = Number(button.dataset.index); enlarged = false;
+      scrollPosition = window.scrollY;
+      renderArtwork(); dialog.showModal();
+      document.body.style.position = 'fixed'; document.body.style.top = '-' + scrollPosition + 'px'; document.body.style.width = '100%';
+      document.querySelector('#close').focus();
+    }));
+    document.querySelector('#close').addEventListener('click', () => dialog.close());
+    document.querySelector('#previous').addEventListener('click', () => navigate(-1));
+    document.querySelector('#next').addEventListener('click', () => navigate(1));
+    zoom.addEventListener('click', () => { enlarged = !enlarged; renderArtwork(); });
+    dialog.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); navigate(event.key === 'ArrowRight' ? 1 : -1); }
+    });
+    dialog.addEventListener('close', () => {
+      document.body.style.position = ''; document.body.style.top = ''; document.body.style.width = '';
+      const previousBehavior = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, scrollPosition); document.documentElement.style.scrollBehavior = previousBehavior;
+      trigger?.focus({preventScroll:true}); stage.replaceChildren();
+    });
+  </script>
+</body>
+</html>
